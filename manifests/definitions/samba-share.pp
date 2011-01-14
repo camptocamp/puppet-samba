@@ -11,6 +11,6 @@ define samba::share($ensure=present,
     ensure  => $ensure,
     file    => "/etc/samba/smb.conf",
     content => template("samba/samba-share.erb"),
-    notify  => Service["samba"],
+    notify  => Exec["restart samba service"],
   }
 }
