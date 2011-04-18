@@ -11,5 +11,4 @@ $ldap_base
 $ldap_admin_password
 
 
-
-Not using the ldap functionality you still have to manualy create the smb users till I figure out a workaround for that .
+When not using the ldap functionality you use the samba::user defines to create the samba users 
