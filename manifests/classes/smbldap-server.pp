@@ -1,6 +1,6 @@
 class samba::smbldap-server inherits samba::server {
   file {"/etc/samba/smb.conf":
-    content => template("samba/smb.conf.erb"),
+    content => template("samba/smbldp.conf.erb"),
     mode    => 0644, 
     owner   => root, 
     group   => root,

@@ -2,6 +2,14 @@ To use this module, you must explicitly declare some variables :
 
 $samba_domain_name
 $samba_netbios_name
+$samba_listen_interface = "10.17.0.69/22"
+$samba_homes = "false"
+
+and if you use the ldap functionality also
 $ldap_uri
 $ldap_base
 $ldap_admin_password
+
+
+
+Not using the ldap functionality you still have to manualy create the smb users till I figure out a workaround for that .
