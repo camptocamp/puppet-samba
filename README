@@ -12,3 +12,24 @@ $ldap_admin_password
 
 
 When not using the ldap functionality you use the samba::user defines to create the samba users 
+
+
+This module now requires the concat module from 
+http://github.com/ripienaar/puppet-concat/
+by  R.I.Pienaar
+
+
+This means that one can add additional shares to the smb.conf using 
+samba::share as follows 
+
+
+ samba::share{"data":
+        name => "data",
+        path => "/srv/storage/",
+        comment => "data",
+        validusers => "me",
+        writelist => "mine",
+        forcegroup => "mine",
+        readonly => "no",
+        createmask => "0766",
+}

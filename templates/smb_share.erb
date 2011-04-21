@@ -1,0 +1,31 @@
+[<%= name %>]
+<%- if !path.empty? -%>
+	path = <%= path %>
+<%- end -%> 
+
+<%- if !guestok.empty? -%>
+	guest ok = <%= guestok %>
+<%- end -%> 
+<%- if !writeable.empty? -%>
+	writeable = <%= writeable %>
+<%- end -%> 
+<%- if !comment.empty? -%>
+        comment = <%= comment %>
+<%- end -%> 
+<%- if !validusers.empty? -%>
+        valid users = <%= validusers %>
+<%- end -%> 
+<%- if !writelist.empty? -%>
+        write list =  <%= writelist %>
+<%- end -%> 
+<%- if !forcegroup.empty? -%>
+	force group = <%= forcegroup %>
+<%- end -%> 
+<%- if !readonly.empty? -%>
+        read only = <%= readonly %>
+<%- end -%> 
+<%- if !createmask.empty? -%>
+        create mask = <%= createmask %> 
+<%- end -%> 
+
+
