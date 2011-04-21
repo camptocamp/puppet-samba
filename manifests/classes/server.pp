@@ -3,17 +3,6 @@ class samba::server inherits samba::common {
     ensure => installed,
   }
 
-#  Needs to be samba on da debian box apparently I modified this to smb "
-#case $operatingsystem {
-#    Debian,Ubuntu: { include apache::debian}
-#    RedHat,CentOS: { include apache::redhat}
-#    default: { notice "Unsupported operatingsystem ${operatingsystem}" }
-#  }
-
-#$lsbdistid ? {
-#      default => "/etc/httpd/conf.d/foreman.conf",
-#      "Ubuntu" => "/etc/apache2/conf.d/foreman.conf"
-#    },
 
   service { "samba":
     ensure  => running,
@@ -31,6 +20,8 @@ class samba::server inherits samba::common {
     require => Package[samba],
   }
 
+
+
   file { "/etc/samba":
     ensure  => directory,
     owner   => root,
@@ -40,12 +31,33 @@ class samba::server inherits samba::common {
   }
 
 
- file {"/etc/samba/smb.conf":
-    content => template("samba/smb.conf.erb"),
-    mode    => 0644, 
-    owner   => root, 
-    group   => root,
-    require => [ Package[samba] ],
-    notify  => [ Service[samba] ],
-  }
+
+
+
+# file {"/etc/samba/smb.conf":
+#    content => template("samba/smb.conf.erb"),
+#    mode    => 0644, 
+#    owner   => root, 
+#    group   => root,
+#    require => [ Package[samba] ],
+#    notify  => [ Service[samba] ],
+#  }
+
+    include concat::setup 
+    concat{"/etc/samba/smb.conf":
+	owner => root,
+	group => root,
+	mode  => 644,
+	notify => [ Service[samba]]
+    }
+
+ 
+    concat::fragment{"default_smb_config":
+	target => "/etc/samba/smb.conf",
+	content => template("samba/smb.conf.erb"),
+	order => 01,
+    } 
+
 }
+
+   
