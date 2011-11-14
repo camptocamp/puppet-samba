@@ -53,7 +53,12 @@
     set primary group script = /usr/sbin/smbldap-usermod -g "%g" "%u"
 
     nt acl support = No
-    deadtime = 10
+    <% if has_variable?("smb_deadtime") -%>
+      deadtime = <%= smb_deadtime %>
+    <% else -%>
+      deadtime = 10
+    <% end -%>
+
     guest account = nobody
     map to guest = Bad User
     dont descend = /proc,/dev,/etc,/lib,/lost+found,/initrd
