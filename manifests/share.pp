@@ -7,10 +7,10 @@ define samba::share($ensure=present,
     $browsable=yes,
     $smb_options=[]) {
 
-  common::concatfilepart {"$name":
+  concat::fragment {$name:
     ensure  => $ensure,
-    file    => "/etc/samba/smb.conf",
-    content => template("samba/samba-share.erb"),
-    notify  => Exec["restart samba service"],
+    target  => '/etc/samba/smb.conf',
+    content => template('samba/samba-share.erb'),
   }
+
 }

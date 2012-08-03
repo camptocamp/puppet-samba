@@ -6,4 +6,14 @@ class samba::common {
     command     => "/etc/init.d/samba restart",
     refreshonly => true,
   }
+
+  include concat::setup
+  
+  concat {'/etc/samba/smb.conf':
+    owner   => root,
+    group   => root,
+    mode    => '0644',
+    notify  => Exec["restart samba service"],
+  }
+
 }
