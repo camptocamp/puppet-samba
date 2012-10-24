@@ -20,8 +20,8 @@ define samba::smbuser::username (
   }
 
   augeas {"Manage ${name} in ${file}":
-    context   => "/files${file}",
-    load_path => "/usr/share/augeas/lenses/contrib/",
+    incl      => $file,
+    lens      => 'SmbUsers.lns',
     changes   => $changes,
     notify => Service['samba'],
     require => Package['samba'],
