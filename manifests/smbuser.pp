@@ -20,8 +20,8 @@ define samba::smbuser (
 
     absent: {
       augeas {"Manage ${name} in ${file}":
-        context   => "/files${file}",
-        load_path => '/usr/share/augeas/lenses/contrib/',
+        incl      => $file,
+        lens      => 'SmbUsers.lns',
         changes   => "rm ${name}",
         notify    => Service['samba'],
         require   => Package['samba'],
