@@ -7,8 +7,6 @@ class samba::common {
     refreshonly => true,
   }
 
-  include concat::setup
-  
   concat {'/etc/samba/smb.conf':
     owner   => root,
     group   => root,
