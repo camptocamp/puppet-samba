@@ -1,4 +1,6 @@
-class samba::smbldap_server inherits samba::server {
+class samba::smbldap_server(
+  $ldap_admin_password = $::ldap_admin_password,
+) inherits samba::server {
   file {'/etc/samba/smb.conf':
     content => template('samba/smb.conf.erb'),
     mode    => '0644',
