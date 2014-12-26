@@ -20,10 +20,10 @@ define samba::smbuser::username (
   }
 
   augeas {"Manage ${name} in ${file}":
-    incl      => $file,
-    lens      => 'SmbUsers.lns',
-    changes   => $changes,
-    notify => Service['samba'],
+    incl    => $file,
+    lens    => 'SmbUsers.lns',
+    changes => $changes,
+    notify  => Service['samba'],
     require => Package['samba'],
   }
 }

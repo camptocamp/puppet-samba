@@ -20,11 +20,11 @@ define samba::smbuser (
 
     absent: {
       augeas {"Manage ${name} in ${file}":
-        incl      => $file,
-        lens      => 'SmbUsers.lns',
-        changes   => "rm ${name}",
-        notify    => Service['samba'],
-        require   => Package['samba'],
+        incl    => $file,
+        lens    => 'SmbUsers.lns',
+        changes => "rm ${name}",
+        notify  => Service['samba'],
+        require => Package['samba'],
       }
     }
 
