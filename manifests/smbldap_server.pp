@@ -1,8 +1,8 @@
-class samba::smbldap-server inherits samba::server {
+class samba::smbldap_server inherits samba::server {
   file {"/etc/samba/smb.conf":
     content => template("samba/smb.conf.erb"),
-    mode    => 0644, 
-    owner   => root, 
+    mode    => 0644,
+    owner   => root,
     group   => root,
     require => [ Class["openldap::smbldap-server"], Package[samba] ],
     notify  => [ Service[samba], Exec["set ldap admin password"] ],
