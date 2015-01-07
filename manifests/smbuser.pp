@@ -8,7 +8,7 @@ define samba::smbuser (
 
   case $ensure {
 
-    present: {
+    'present': {
       # Loop on every username in the list
       # TODO: This might be better with a ruby provider
       samba::smbuser::username {$usernames:
@@ -18,7 +18,7 @@ define samba::smbuser (
       }
     }
 
-    absent: {
+    'absent': {
       augeas {"Manage ${name} in ${file}":
         incl    => $file,
         lens    => 'SmbUsers.lns',

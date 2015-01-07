@@ -8,11 +8,11 @@ define samba::smbuser::username (
 
   case $ensure {
 
-    present: {
+    'present': {
       $changes = "set ${user}/username[.='${name}'] '${name}'"
     }
 
-    absent: {
+    'absent': {
       $changes = "rm ${user}/username[.=${name}]'"
     }
 
