@@ -4,7 +4,7 @@ define samba::smbuser::username (
   $ensure='present'
 ) {
 
-  include samba::smbuser::augeas
+  include ::samba::smbuser::augeas
 
   case $ensure {
 

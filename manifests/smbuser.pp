@@ -4,7 +4,7 @@ define samba::smbuser (
   $file='/etc/samba/smbusers'
 ) {
 
-  include samba::smbuser::augeas
+  include ::samba::smbuser::augeas
 
   case $ensure {
 
