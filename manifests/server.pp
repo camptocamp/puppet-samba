@@ -3,9 +3,15 @@ class samba::server inherits samba::common {
     ensure => installed,
   }
 
+  $samba_service_name = $::lsbdistcodename ? {
+    'jessie'  => 'smbd',
+    default   => 'samba',
+  }
+
   service { 'samba':
     ensure  => running,
-    pattern => smbd,
+    name    => $samba_service_name,
+    pattern => 'smbd',
     restart => '/etc/init.d/samba reload',
     require => Package[samba],
   }

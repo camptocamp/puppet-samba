@@ -6,7 +6,8 @@ describe 'samba::server' do
     context "on #{os}" do
       let(:facts) do
         facts.merge({
-          :concat_basedir => '/foo',
+          :concat_basedir  => '/foo',
+          :lsbdistcodename => 'jessie',
         })
       end
 
